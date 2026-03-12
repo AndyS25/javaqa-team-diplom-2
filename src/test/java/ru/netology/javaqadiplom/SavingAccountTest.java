@@ -46,7 +46,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void minBalanceExceptionTest() /*отрицательный минимум*/{ //не прошел
+    public void minBalanceExceptionTest() /*отрицательный минимум*/ { //не прошел
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             SavingAccount account = new SavingAccount(
@@ -59,7 +59,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void maxLessMinExceptionTest() /*максимум меньше минимум*/{ //не прошел
+    public void maxLessMinExceptionTest() /*максимум меньше минимум*/ { //не прошел
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             SavingAccount account = new SavingAccount(
@@ -72,7 +72,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void balanceLessMinExceptionTest() /*баланс меньше минимум*/{ //не прошел
+    public void balanceLessMinExceptionTest() /*баланс меньше минимум*/ { //не прошел
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             SavingAccount account = new SavingAccount(
@@ -119,7 +119,7 @@ public class SavingAccountTest {
     public void positivePayToMinTest() { //прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
 
-        Assertions.assertTrue( account.pay(500));
+        Assertions.assertTrue(account.pay(500));
     }
 
     @Test
