@@ -203,4 +203,11 @@ public class SavingAccountTest {
         Assertions.assertEquals(0, account.yearChange());
     }
 
+    @Test
+    public void roundingOfInterestOnDepositTest() { //прошел
+        SavingAccount account = new SavingAccount(3_211, 1_000, 10_000, 5);
+
+        Assertions.assertEquals(3_211 / 100 * 5, account.yearChange());
+    }
+
 }
