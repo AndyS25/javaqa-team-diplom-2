@@ -154,32 +154,37 @@ public class SavingAccountTest {
         Assertions.assertFalse(account.add(-1_000));
     }
 
-    public void balanceNegativeAddTest() { // прошел
+    @Test
+    public void balanceNegativeAddTest() { // не прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
-        account.add(1_000);
+        account.add(-1_000);
 
-        Assertions.assertEquals(3_000 + 1_000, account.getBalance());
+        Assertions.assertEquals(3_000, account.getBalance());
     }
 
+    @Test
     public void positiveAddToMaxTest() { //прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
 
         Assertions.assertTrue(account.add(1_000));
     }
 
-    public void balancePositiveAddSuccessTest() { // прошел
+    @Test
+    public void balancePositiveAddSuccessTest() { // не прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
         account.add(1_000);
 
         Assertions.assertEquals(3_000 + 1_000, account.getBalance());
     }
 
+    @Test
     public void positiveAddMoreMaxTest() { //прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
 
         Assertions.assertFalse(account.add(11_000));
     }
 
+    @Test
     public void balancePositiveAddFailTest() { //прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
         account.add(11_000);
