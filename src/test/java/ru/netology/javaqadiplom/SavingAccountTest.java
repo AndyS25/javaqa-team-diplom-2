@@ -155,7 +155,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void balanceNegativeAddTest() { // не прошел
+    public void balanceNegativeAddTest() { // прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
         account.add(-1_000);
 
@@ -204,6 +204,7 @@ public class SavingAccountTest {
     @Test
     public void changesForYearInterestOnBalanceTest() { // не прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
+        account.add(1_000);
 
         Assertions.assertEquals(0, account.yearChange());
     }
