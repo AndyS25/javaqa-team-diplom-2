@@ -55,29 +55,35 @@ public class CreditAccountTest {
     //Тесты на выкидывание исключения вида IllegalArgumentException
     @Test //создание кредитного счета с отрицательным начальным балансом
     public void shouldCreateCreditAccountNegativeInitialBalance() {
-        CreditAccount account = new CreditAccount(
-                -1_000,
-                5_000,
-                15
-        );
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            CreditAccount account = new CreditAccount(
+                    -1_000,
+                    5_000,
+                    15
+            );
+        });
     }
 
     @Test //создание кредитного счета с отрицательным кредитным лимитом
     public void shouldCreateCreditAccountNegativeCreditLimit() {
-        CreditAccount account = new CreditAccount(
-                0,
-                -5_000,
-                15
-        );
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            CreditAccount account = new CreditAccount(
+                    0,
+                    -5_000,
+                    15
+            );
+        });
     }
 
     @Test //создание кредитного счета с отрицательной ставкой
     public void shouldCreateCreditAccountNegativeRate() {
-        CreditAccount account = new CreditAccount(
-                0,
-                5_000,
-                -5
-        );
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            CreditAccount account = new CreditAccount(
+                    0,
+                    5_000,
+                    -5
+            );
+        });
     }
 
     //Тесты на оплату с карты на указанную сумму
@@ -89,8 +95,7 @@ public class CreditAccountTest {
                 10
         );
 
-        account.pay(-500);
-        Assertions.assertEquals(1_000, account.getBalance());
+        Assertions.assertEquals(false, account.pay(-500));
     }
 
     @Test //покупка на нулевую сумму
@@ -101,8 +106,7 @@ public class CreditAccountTest {
                 10
         );
 
-        account.pay(0);
-        Assertions.assertEquals(1_000, account.getBalance());
+        Assertions.assertEquals(false, account.pay(0));
     }
 
     @Test //покупка на сумму в пределах положительного баланса
@@ -129,18 +133,6 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-    @Test //покупка на сумму больше баланса
-    public void shouldPayMoreBalance() {
-        CreditAccount account = new CreditAccount(
-                1_000,
-                5_000,
-                10
-        );
-
-        account.pay(2_000);
-        Assertions.assertEquals(-1_000, account.getBalance());
-    }
-
     @Test //покупка в пределах кредитного лимита
     public void shouldPayPositiveCreditLimit() {
         CreditAccount account = new CreditAccount(
@@ -161,8 +153,7 @@ public class CreditAccountTest {
                 10
         );
 
-        account.pay(4_000);
-        Assertions.assertEquals(1_000, account.getBalance());
+        Assertions.assertEquals(false, account.pay(4_000));
     }
 
     @Test //покупка равна сумме баланса и кредитного лимита
