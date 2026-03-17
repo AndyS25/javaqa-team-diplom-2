@@ -86,6 +86,16 @@ public class CreditAccountTest {
         });
     }
 
+    //Тест на создание кредитного счета с нулевыми параметрами
+    @Test //создание кредитного счета с нулевыми значениями начального баланса, кредитного лимита и процентной ставкой
+    public void shouldCreateCreditAccountZeroRate() {
+            CreditAccount account = new CreditAccount(
+                    0,
+                    0,
+                    0
+            );
+    }
+
     //Тесты на оплату с карты на указанную сумму
     @Test //покупка на отрицательную сумму
     public void shouldPayNegativeAmount() {
