@@ -86,15 +86,15 @@ public class CreditAccountTest {
         });
     }
 
-    //Тест на создание кредитного счета с нулевыми параметрами
-    @Test //создание кредитного счета с нулевыми значениями начального баланса, кредитного лимита и процентной ставкой
-    public void shouldCreateCreditAccountZeroRate() {
-            CreditAccount account = new CreditAccount(
-                    0,
-                    0,
-                    0
-            );
-    }
+//    //Тест на создание кредитного счета с нулевыми параметрами
+//    @Test //создание кредитного счета с нулевыми значениями начального баланса, кредитного лимита и процентной ставкой
+//    public void shouldCreateCreditAccountZeroRate() {
+//            CreditAccount account = new CreditAccount(
+//                    0,
+//                    0,
+//                    0
+//            );
+//    }
 
     //Тесты на оплату с карты на указанную сумму
     @Test //покупка на отрицательную сумму
@@ -200,6 +200,37 @@ public class CreditAccountTest {
 
         account.pay(200);
         Assertions.assertEquals(-30, account.yearChange());
+    }
+
+    //Тест на создание кредитного счета с нулевыми параметрами
+    @Test //создание кредитного счета с нулевым значением процентной ставки
+    public void shouldCreateCreditAccountZeroRate() {
+        CreditAccount account = new CreditAccount(
+                1,
+                1,
+                0
+        );
+        Assertions.assertEquals(0, account.getRate());
+    }
+
+    @Test //создание кредитного счета с нулевым значением начального баланса
+    public void shouldCreateCreditAccountZeroInitialBalance() {
+        CreditAccount account = new CreditAccount(
+                0,
+                1,
+                1
+        );
+        Assertions.assertEquals(0, account.getBalance());
+    }
+
+    @Test //создание кредитного счета с нулевым значением кредитного лимита
+    public void shouldCreateCreditAccountZeroCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                1,
+                0,
+                1
+        );
+        Assertions.assertEquals(0, account.getCreditLimit());
     }
 
 }
