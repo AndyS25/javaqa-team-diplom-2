@@ -107,13 +107,6 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void zeroPayTest() { //прошел
-        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
-
-        Assertions.assertFalse(account.pay(0));
-    }
-
-    @Test
     public void balanceNegativePayTest() { //прошел
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
         account.pay(-1000);
@@ -159,13 +152,6 @@ public class SavingAccountTest {
         SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
 
         Assertions.assertFalse(account.add(-1_000));
-    }
-
-    @Test
-    public void zeroAddTest() { // прошел
-        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
-
-        Assertions.assertFalse(account.add(0));
     }
 
     @Test
@@ -220,6 +206,20 @@ public class SavingAccountTest {
         SavingAccount account = new SavingAccount(3_211, 1_000, 10_000, 5);
 
         Assertions.assertEquals(3_211 / 100 * 5, account.yearChange());
+    }
+
+    @Test
+    public void zeroAddTest() { // прошел
+        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
+
+        Assertions.assertFalse(account.add(0));
+    }
+
+    @Test
+    public void zeroPayTest() { // прошел
+        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
+
+        Assertions.assertFalse(account.pay(0));
     }
 
 }
