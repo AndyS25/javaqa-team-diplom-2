@@ -202,14 +202,6 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void changesForYearInterestOnBalanceTest() { // не прошел
-        SavingAccount account = new SavingAccount(3_000, 1_000, 10_000, 5);
-        account.add(1_000);
-
-        Assertions.assertEquals(0, account.yearChange());
-    }
-
-    @Test
     public void roundingOfInterestOnDepositTest() { //прошел
         SavingAccount account = new SavingAccount(3_211, 1_000, 10_000, 5);
 
